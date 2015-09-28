@@ -1,5 +1,14 @@
 = sapnwrfc - SAP Netweaver RFC support for Ruby 1.9.x
 
+== Install nwrfcsdk ==
+
+Flow: 
+
+bundle install
+
+install_nwrfcsdk
+
+
 == Summary
 
 Welcome to the sapnwrfc Ruby package.  This package is intended to facilitate RFC calls to an SAP R/3 system of release NW2004x and above.  It may work for earlier versions but it hasn't been tested.
