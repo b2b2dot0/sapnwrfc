@@ -12,7 +12,7 @@ end
 
 rfclib = "sapnwrfc"
 
-if ! /(mswin32|mingw32)/.match(Config::CONFIG["host_os"])
+if ! /(mswin32|mingw32)/.match(RbConfig::CONFIG["host_os"])
 #  $CFLAGS += " -g -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -m64 -mno-3dnow -fno-strict-aliasing -pipe -fexceptions -funsigned-char -Wall -Wno-uninitialized -Wno-long-long -Wcast-align "
   $CFLAGS += " -D_LARGEFILE_SOURCE -mno-3dnow -fno-strict-aliasing -pipe -fexceptions -funsigned-char -Wall -Wno-uninitialized -Wno-long-long -Wcast-align "
   $CFLAGS += " -DSAPwithUNICODE "
@@ -43,13 +43,13 @@ print "Modified LIBPATH: #{$LIBPATH}\n"
 
 if (! have_header("sapnwrfc.h") )
   print "adding default nwrfcsdk location for headers ...\n"
-  $CFLAGS += " -I/usr/sap/nwrfcsdk/include" 
+  $CFLAGS += " -I/usr/sap/nwrfcsdk/include"
   if (! have_header("sapnwrfc.h") )
 	  print "This will not work - ABORTING because cannot find sapnwrfc.h\n"
 		exit!
 	end
 end
-  
+
 #have_library("c")
 have_library("m")
 have_library("dl")
@@ -94,7 +94,7 @@ end
 #  print "DID NOT find libicudecnumber - this may cause problems  ...\n"
 #end
 
-if ! /(mswin32|mingw32)/.match(Config::CONFIG["host_os"])
+if ! /(mswin32|mingw32)/.match(RbConfig::CONFIG["host_os"])
   print "Existing Compile protocol: #{COMPILE_C} ...\n"
   COMPILE_C  =
     '$(CC) $(INCFLAGS) $(CFLAGS) $(CPPFLAGS) -E -c $< > $<.ii' + "\n\t" +
