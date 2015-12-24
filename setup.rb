@@ -281,7 +281,6 @@ class ConfigTable
     'site-ruby-common' => 'siteruby',     # For backward compatibility
     'site-ruby'        => 'siterubyver',  # For backward compatibility
     'bin-dir'          => 'bindir',
-    'bin-dir'          => 'bindir',
     'rb-dir'           => 'rbdir',
     'so-dir'           => 'sodir',
     'data-dir'         => 'datadir',
@@ -662,7 +661,7 @@ module FileOperations
   def ruby(*args)
     command config('rubyprog'), *args
   end
-  
+
   def make(task = nil)
     command(*[config('makeprog'), task].compact)
   end
@@ -725,7 +724,7 @@ module HookScriptAPI
   def srcdirectory?(path)
     File.dir?(srcfile(path))
   end
-  
+
   def srcfile?(path)
     File.file?(srcfile(path))
   end
@@ -781,14 +780,7 @@ class ToplevelInstaller
   end
 
   def ToplevelInstaller.load_rbconfig
-    if arg = ARGV.detect {|arg| /\A--rbconfig=/ =~ arg }
-      ARGV.delete(arg)
-      load File.expand_path(arg.split(/=/, 2)[1])
-      $".push 'rbconfig.rb'
-    else
-      require 'rbconfig'
-    end
-    ::Config::CONFIG
+    RbConfig::CONFIG
   end
 
   def initialize(ardir_root, config)
@@ -829,7 +821,7 @@ class ToplevelInstaller
       __send__ "exec_#{task}"
     end
   end
-  
+
   def run_metaconfigs
     @config.load_script "#{@ardir}/metaconfig"
   end
@@ -1445,7 +1437,7 @@ class Installer
   end
 
   # picked up many entries from cvs-1.11.1/src/ignore.c
-  JUNK_FILES = %w( 
+  JUNK_FILES = %w(
     core RCSLOG tags TAGS .make.state
     .nse_depinfo #* .#* cvslog.* ,* .del-* *.olb
     *~ *.old *.bak *.BAK *.orig *.rej _$* *$
