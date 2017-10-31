@@ -16,6 +16,8 @@ Gem::Specification.new do |spec|
   spec.homepage = 'http://github.com/fuzziness/sapnwrfc'
   spec.files = Dir['lib/**/*.rb', 'README.*', 'ChangeLog']
   spec.files += Dir['ext/nwsaprfc/*.so']
+  spec.files += ['bin/install_nwrfcsdk']
+  spec.executables = ['install_nwrfcsdk']
   spec.test_files = Dir['test/**/*']
   spec.required_ruby_version = '>= 1.9.0'
   spec.require_paths = ['ext/nwsaprfc', 'lib']

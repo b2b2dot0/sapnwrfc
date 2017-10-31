@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+shell_script_path = File.join(__dir__, 'install_sdk.sh')
+puts shell_script_path
+Dir.chdir(File.join(__dir__, '..', '.')) do
+  `#{shell_script_path}`
+end
+
